@@ -1,5 +1,7 @@
 # rasp-pytorch
 
+![rasp_model](img/banner.png)
+
 Reimplementation of RaSP, a deep neural network for rapid protein stability prediction, in PyTorch.
 You can find the official implementation of RaSP [here](https://github.com/KULL-Centre/papers/tree/main/2022/ML-ddG-Blaabjerg-et-al).
 
