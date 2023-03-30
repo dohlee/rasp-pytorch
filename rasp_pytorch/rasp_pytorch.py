@@ -50,7 +50,7 @@ class RaSPCavityModel(pl.LightningModule):
         return loss
     
     def configure_optimizers(self):
-        return torch.optim.AdamW(self.parameters(), lr=1e-3)
+        return torch.optim.Adam(self.parameters(), lr=3e-4)
 
 
 if __name__ == '__main__':
