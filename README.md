@@ -11,6 +11,14 @@ You can find the official implementation of RaSP [here](https://github.com/KULL-
 $ pip install rasp-pytorch
 ```
 
+## Training data
+
+Training data for cavity model (2,315 high-resolution protein structures obtained using the PISCES server with maximal sequence identity set to 30%) was downloaded from [official GitHub repository](https://github.com/KULL-Centre/papers/tree/main/2022/ML-ddG-Blaabjerg-et-al/data/train/cavity).
+
+## Custom data preprocessing
+
+Although the reproduction was done using the official training data, we can also compose custom training dataset using `protein-structure-preprocessing` pipeline, which can be found [here](https://github.com/dohlee/protein-structure-preprocessing).
+
 ## Citation
 ```bibtex
 @article{Blaabjerg2022.07.14.500157,
