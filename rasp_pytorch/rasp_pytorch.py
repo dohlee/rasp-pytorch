@@ -9,7 +9,7 @@ class RaSPCavityModel(pl.LightningModule):
     def __init__(self, n_atom_types=5): # but n_atom_types = 5 in the manuscript
         super().__init__()
 
-        self.main = nn.Sequential(
+        self.stem = nn.Sequential(
             nn.Conv3d(n_atom_types, 16, kernel_size=3, stride=1, padding=1),
             nn.MaxPool3d(kernel_size=2, stride=2, padding=0),
             nn.BatchNorm3d(16),
@@ -31,16 +31,19 @@ class RaSPCavityModel(pl.LightningModule):
             nn.BatchNorm1d(128),
             nn.LeakyReLU(),
             nn.Linear(128, 100),
+        )
+
+        self.head = nn.Sequential(
             nn.LeakyReLU(),
             nn.Linear(100, 20),
         )
 
     def forward(self, x):
-        return self.main(x)
+        emb = self.stem(x)
+        return self.head(emb)
     
     def training_step(self, batch):
         bsz = batch.shape[0]
-
         # dummy for now
         label = torch.randint(0, 20, (bsz,))
 
